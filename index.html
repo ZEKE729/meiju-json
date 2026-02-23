@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>妹居物语 · JSON收录</title>
+    <!-- Font Awesome 6 (免费版) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- highlight.js 用于代码高亮 (黑白主题) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/a11y-light.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 头部：左侧电话图标，中间标题（点击回首页），右侧关于图标 -->
+    <header>
+        <button id="feedback-btn" class="icon-btn" aria-label="反馈"><i class="fas fa-phone"></i></button>
+        <h1 id="home-title">妹居物语</h1>
+        <button id="about-btn" class="icon-btn" aria-label="关于"><i class="fas fa-info-circle"></i></button>
+    </header>
+
+    <!-- 主容器：根据当前视图显示不同页面 -->
+    <main id="main-content">
+        <!-- 首页视图 (初始可见) -->
+        <section id="home-view" class="view active">
+            <div class="intro">
+                <h2>妹居物语</h2>
+                <!-- 三段介绍，每段四行字（测试文本） -->
+                <div class="intro-text">
+                    <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                    <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                    <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                </div>
+                <!-- 三四张图片占位：注释告诉你如何替换 -->
+                <div class="intro-images">
+                    <!-- 在这里放置你的图片，建议3-4张，使用 <img src="images/your-image.jpg" alt=""> 格式 -->
+                    <div class="image-placeholder">图片1</div>
+                    <div class="image-placeholder">图片2</div>
+                    <div class="image-placeholder">图片3</div>
+                    <div class="image-placeholder">图片4</div>
+                    <!-- 实际使用时替换为 <img src="images/xxx.jpg"> 并删除占位文本 -->
+                </div>
+            </div>
+
+            <!-- 列表区域，由 JavaScript 动态生成 -->
+            <div id="list-container" class="list-container">
+                <!-- 列表项将通过 JS 插入 -->
+            </div>
+        </section>
+
+        <!-- 反馈视图 (点击电话图标显示) -->
+        <section id="feedback-view" class="view">
+            <h2>联系方式</h2>
+            <p><i class="fas fa-qq"></i> QQ：2928332588</p>
+            <p><i class="fas fa-envelope"></i> 邮箱：zeke729103@163.com</p>
+        </section>
+
+        <!-- 关于视图 (点击关于图标显示) -->
+        <section id="about-view" class="view">
+            <h2>关于此网站</h2>
+            <div class="about-text">
+                <!-- 这里放置大量说明文本，预留足够位置 -->
+                <p>这里是第一段说明文字，可以写很多很多内容。这里是第一段说明文字，可以写很多很多内容。这里是第一段说明文字，可以写很多很多内容。</p>
+                <p>这里是第二段说明文字，继续补充细节。这里是第二段说明文字，继续补充细节。这里是第二段说明文字，继续补充细节。</p>
+                <p>这里是第三段说明文字，还可以继续。这里是第三段说明文字，还可以继续。这里是第三段说明文字，还可以继续。</p>
+                <!-- 根据需要增加更多段落 -->
+            </div>
+            <!-- 最下方两个圆形图片（成员图片） -->
+            <div class="member-images">
+                <!-- 替换为你的圆形图片，建议正方形头像 -->
+                <div class="member-img" style="background-image: url('images/member1.jpg');"></div>
+                <div class="member-img" style="background-image: url('images/member1.jpg');"></div>
+                <!-- 也可以用 <img> 但需要CSS圆角，这里用背景图方便 -->
+            </div>
+        </section>
+
+        <!-- 详情视图 (点击列表项后显示) -->
+        <section id="detail-view" class="view">
+            <div class="detail-header">
+                <h2 id="detail-name">名称</h2>
+                <a id="download-btn" class="download-bar" download>⬇️ 下载 JSON 文件</a>
+            </div>
+            <!-- 代码展示区域（带高亮） -->
+            <div class="code-wrapper">
+                <pre><code id="json-code" class="language-json"></code></pre>
+            </div>
+            <!-- 后门管理工具 (管理员用) -->
+            <div class="admin-tools">
+                <button id="toggle-admin" class="admin-toggle">⚙️ 管理员工具</button>
+                <div id="admin-panel" class="admin-panel hidden">
+                    <h3>上传 / 预览 JSON</h3>
+                    <div>
+                        <label>上传文件：</label>
+                        <input type="file" id="upload-json" accept=".json,application/json">
+                    </div>
+                    <div>
+                        <label>或直接粘贴：</label>
+                        <textarea id="paste-json" rows="6" placeholder='{"key": "value"}'></textarea>
+                    </div>
+                    <div class="admin-actions">
+                        <button id="preview-pasted">预览粘贴内容</button>
+                        <button id="reset-original">重置为原始文件</button>
+                    </div>
+                    <p class="admin-note">预览后下方代码框更新，下载按钮仍下载原始文件。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
