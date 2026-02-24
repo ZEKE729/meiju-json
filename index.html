@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>妹居物语 · JSON收录</title>
+    <!-- Font Awesome 6 (免费版) 图标库，保留CDN，不影响本地化 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- highlight.js 本地文件（请自行下载并放置于 libs/ 文件夹） -->
+    <link rel="stylesheet" href="libs/highlight.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <button id="feedback-btn" class="icon-btn" aria-label="反馈"><i class="fas fa-phone"></i></button>
+        <h1 id="home-title">妹居物语</h1>
+        <button id="about-btn" class="icon-btn" aria-label="关于"><i class="fas fa-info-circle"></i></button>
+    </header>
+
+    <main id="main-content">
+        <!-- 首页视图 -->
+        <section id="home-view" class="view active">
+            <div class="intro">
+                <!-- 图片一（大图）放在最前面 -->
+                <div class="featured-image">
+                    <!-- 替换为你的大图，建议比例 1806x1024 (近似16:9) -->
+                    <img src="images/featured.jpg" alt="妹居物语主视觉" class="featured-img">
+                </div>
+
+                <!-- 左半部分容器（标题+三段文本），在电脑上与右侧四图并排 -->
+                <div class="intro-main">
+                    <h2>妹居物语</h2>
+                    <div class="intro-text">
+                        <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                        <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                        <p>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试<br>测试文本测试文本测试文本测试</p>
+                    </div>
+                </div>
+
+                <!-- 右侧四张正方形图片容器 -->
+                <div class="intro-thumbnails">
+                    <!-- 替换为你的四张正方形头像图片 -->
+                    <div class="thumbnail"><img src="images/thumb1.jpg" alt="成员1"></div>
+                    <div class="thumbnail"><img src="images/thumb2.jpg" alt="成员2"></div>
+                    <div class="thumbnail"><img src="images/thumb3.jpg" alt="成员3"></div>
+                    <div class="thumbnail"><img src="images/thumb4.jpg" alt="成员4"></div>
+                </div>
+            </div>
+
+            <!-- 列表区域 -->
+            <div id="list-container" class="list-container"></div>
+        </section>
+
+        <!-- 反馈视图 -->
+        <section id="feedback-view" class="view">
+            <h2>联系方式</h2>
+            <p><i class="fab fa-qq"></i> QQ：123456789</p>
+            <p><i class="fas fa-envelope"></i> 邮箱：example@example.com</p>
+            <!-- 替换成你自己的QQ和邮箱 -->
+        </section>
+
+        <!-- 关于视图 -->
+        <section id="about-view" class="view">
+            <h2>关于此网站</h2>
+            <div class="about-text">
+                <p>这里是第一段说明文字，可以写很多很多内容。这里是第一段说明文字，可以写很多很多内容。这里是第一段说明文字，可以写很多很多内容。</p>
+                <p>这里是第二段说明文字，继续补充细节。这里是第二段说明文字，继续补充细节。这里是第二段说明文字，继续补充细节。</p>
+                <p>这里是第三段说明文字，还可以继续。这里是第三段说明文字，还可以继续。这里是第三段说明文字，还可以继续。</p>
+                <!-- 根据需要增加更多段落 -->
+            </div>
+            <!-- 最下方两个圆形图片（成员图片） -->
+            <div class="member-images">
+                <!-- 替换为你的圆形图片，建议正方形 -->
+                <div class="member-img" style="background-image: url('images/member1.jpg');"></div>
+                <div class="member-img" style="background-image: url('images/member2.jpg');"></div>
+            </div>
+        </section>
+
+        <!-- 详情视图 -->
+        <section id="detail-view" class="view">
+            <div class="detail-header">
+                <button id="back-from-detail" class="icon-btn"><i class="fas fa-arrow-left"></i></button>
+                <h2 id="detail-name">名称</h2>
+                <a id="download-btn" class="download-bar" download>⬇️ 下载 JSON 文件</a>
+            </div>
+            <!-- 代码展示区域（带高亮） -->
+            <div class="code-wrapper">
+                <pre><code id="json-code" class="language-json"></code></pre>
+            </div>
+        </section>
+    </main>
+
+    <script src="libs/highlight.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

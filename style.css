@@ -1,0 +1,233 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    background-color: #0d1117;   /* GitHub 深色背景 */
+    color: #e6edf3;              /* 浅色文字 */
+}
+
+/* 头部 */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #0d1117;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #30363d;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #e6edf3;
+    padding: 0.2rem;
+    line-height: 1;
+}
+.icon-btn:hover {
+    color: #ffffff;
+}
+
+#home-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* 视图切换 */
+.view {
+    display: none;
+    padding: 1rem;
+}
+.view.active {
+    display: block;
+}
+
+/* 首页布局 */
+.intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* 图片一 */
+.featured-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;        /* 接近 1806/1024 */
+    overflow: hidden;
+    background-color: #161b22;
+    border-radius: 8px;
+}
+.featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 标题与文本 */
+.intro-main h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+.intro-text p {
+    margin: 1rem 0;
+}
+
+/* 四张正方形缩略图容器 */
+.intro-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.thumbnail {
+    flex: 1 1 calc(50% - 0.5rem); /* 手机每行两个 */
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #161b22;
+}
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 电脑布局 (≥768px) */
+@media (min-width: 768px) {
+    .intro {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    .featured-image {
+        width: 100%;            /* 在flex item中占满父容器宽度 */
+    }
+    .intro-main {
+        flex: 0 0 45%;           /* 左列宽度45% */
+    }
+    .intro-thumbnails {
+        flex: 0 0 45%;           /* 右列宽度45% */
+        margin-top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    .thumbnail {
+        flex: none;              /* 重置flex，使用grid控制 */
+        width: 100%;
+    }
+}
+
+/* 列表容器 */
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 1rem;
+}
+.list-item {
+    padding: 1rem;
+    border-bottom: 1px solid #30363d;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.list-item:hover {
+    background-color: #161b22;
+}
+.item-name {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.item-author {
+    font-size: 1rem;
+    color: #8b949e;
+}
+
+/* 反馈 & 关于 视图 */
+#feedback-view p {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+}
+.about-text p {
+    margin: 1rem 0;
+}
+.member-images {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.member-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #30363d;
+    border: 2px solid #e6edf3;
+}
+
+/* 详情视图 */
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+#back-from-detail {
+    font-size: 1.8rem;
+    padding: 0;
+}
+#detail-name {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-right: auto;          /* 将下载按钮推到右侧 */
+}
+.download-bar {
+    display: inline-block;
+    background-color: #238636;
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.download-bar:hover {
+    background-color: #2ea043;
+}
+
+/* 代码框 */
+.code-wrapper {
+    background-color: #161b22;
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid #30363d;
+}
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #e6edf3;
+}
+/* highlight.js 自动适配深色，无需额外修改 */
